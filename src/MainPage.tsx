@@ -1,43 +1,37 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Image,
-  Dimensions,
-  useWindowDimensions,
-  Platform,
-} from 'react-native';
+import {Image, SafeAreaView} from 'react-native';
 import styles from './MainPage.styles';
 import {
-  Container,
-  Text,
-  Content,
-  Card,
-  CardItem,
-  Left,
-  Thumbnail,
   Body,
   Button,
+  Card,
+  CardItem,
+  Container,
+  Content,
+  Left,
+  Text,
+  Thumbnail,
+  Header,
 } from 'native-base';
 
 import data from './articles.json';
+import {AppProps} from '../App';
 
-const window = Dimensions.get('window');
-const screen = Dimensions.get('screen');
+interface MainPageProps extends AppProps {
+  name: string;
+}
 
-console.log('Window', window, 'Screen', screen);
-
-const MainPage = () => {
-  const windowSize = useWindowDimensions();
-
-  console.log('WindowDimentionsWidth', windowSize);
+const MainPage: React.FC<MainPageProps> = ({name}) => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
-      <Container >
+      <Container>
+        <Header />
         <Content>
           <Card style={{flex: 0}}>
             <CardItem>
               <Left>
                 <Thumbnail
+                  // @ts-ignore
                   source={{
                     uri: 'https://static.theprint.in/wp-content/uploads/2020/04/Cat-representational-image-e1587622908176-696x391.jpg',
                   }}
@@ -52,16 +46,12 @@ const MainPage = () => {
               <Body>
                 <Image
                   source={{
-                    uri: 'https://lh3.googleusercontent.com/proxy/FFxjQx-u8bE-rcMtPbOMz_scLpEq43dy9FbWWuMHE6dHJgTnZEOgNNCM2vxfrkzWZqK_ZIRwW9jdxiOwg-rSHncpfSS0zdfxpid4NSqoNgYdIR-V',
+                    uri: 'https://static.theprint.in/wp-content/uploads/2020/04/Cat-representational-image-e1587622908176-696x391.jpg',
                   }}
                   style={{height: 200, width: 200, flex: 1}}
                 />
                 <Text>{data.articles[0].title}</Text>
-                <Text>
-                  {Platform.OS == 'android'
-                    ? 'Hello Students'
-                    : 'Hello Android'}
-                </Text>
+                <Text>{name}</Text>
               </Body>
             </CardItem>
             <CardItem>

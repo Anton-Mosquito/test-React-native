@@ -1,10 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import MainPage from './src/MainPage';
 
-const App: () => React$Node = () => {
+export interface AppProps {
+  name: string;
+}
+
+const App: React.FC<AppProps> = ({name}) => {
+  name = 'Mr Robot';
   return (
     <>
-      <MainPage />
+      <MainPage name={name} />
     </>
   );
 };

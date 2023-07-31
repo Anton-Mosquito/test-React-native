@@ -11,7 +11,7 @@ interface DetailsProps {
 const Details: React.FC<DetailsProps> = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
-      <Text>{route.params.itvdn}</Text>
+      <Text>Details</Text>
       <Button light onPress={() => navigation.goBack()}>
         <Text>Back </Text>
       </Button>

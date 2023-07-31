@@ -1,0 +1,2 @@
+export const FETCH_NEWS = 'FETCH_NEWS';
+export const FETCH_NEWS_FROM_INDIA = 'FETCH_NEWS_FROM_INDIA';

@@ -15,13 +15,18 @@ interface NewsCardProps {
   author?: string;
   title?: string;
   onNavigationPress?: void;
+  image?: string;
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({
   title,
   author,
   onNavigationPress,
+  image,
 }) => {
+  let newsImage = image
+    ? image
+    : 'https://static.theprint.in/wp-content/uploads/2020/04/Cat-representational-image-e1587622908176-696x391.jpg';
   return (
     <Content>
       <Card style={{flex: 1}}>
@@ -43,7 +48,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
           <Body>
             <Image
               source={{
-                uri: 'https://static.theprint.in/wp-content/uploads/2020/04/Cat-representational-image-e1587622908176-696x391.jpg',
+                uri: newsImage,
               }}
               style={{height: 200, width: 200, flex: 1}}
             />
@@ -53,7 +58,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
         <CardItem>
           <Left>
             <Button
-              dark
+              primary
               textStyle={{color: '#87838B'}}
               //@ts-ignore
               onPress={onNavigationPress}>

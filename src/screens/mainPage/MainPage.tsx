@@ -16,7 +16,10 @@ const MainPage: React.FC = ({navigation}) => {
             key={index}
             title={article.title}
             author={article.author}
-            onNavigationPress={() => navigation.navigate('Details')}
+            image={article.urlToImage}
+            onNavigationPress={() =>
+              navigation.navigate('Details', {articleDetails: article.content})
+            }
           />
         ))}
       </ScrollView>

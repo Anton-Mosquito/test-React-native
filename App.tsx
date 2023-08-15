@@ -4,15 +4,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Details from './src/screens/details/Details';
 import createSagaMiddleware from 'redux-saga';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MainNews from './src/screens/MainNews';
+import MainNews from './src/screens/mainNews/MainNews';
 import MainPage from './src/screens/mainPage/MainPage';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {RootReducer} from './src/redux/Reducer';
 import {sagaObserver} from './src/redux/saga';
 import {composeWithDevTools} from 'redux-devtools-extension';
-// import Users from './src/screens/Users';
-// import Settings from './src/screens/Settings';
+// import SplashScreen from 'react-native-splash-screen';
+// import {useEffect} from 'react';
 
 const MyFirstStack = createStackNavigator();
 
@@ -23,7 +23,6 @@ const saga = createSagaMiddleware();
 const store = createStore(
   RootReducer,
   composeWithDevTools(applyMiddleware(saga)),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 saga.run(sagaObserver);
@@ -38,6 +37,7 @@ const TabPage = () => {
 };
 
 const App: React.FC = () => {
+  //useEffect(() => SplashScreen.hide(), []);
   return (
     <Provider store={store}>
       <NavigationContainer>

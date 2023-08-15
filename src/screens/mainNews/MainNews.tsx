@@ -2,8 +2,8 @@ import React from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import {Button, Text} from 'native-base';
 import {useDispatch, useSelector} from 'react-redux';
-import NewsCard from '../components/NewsCard';
-import {fetchNewsIndia} from '../redux/actions';
+import NewsCard from '../../components/NewsCard';
+import {fetchNewsIndia} from '../../redux/actions';
 
 interface MainNewsProps {
   navigation: any;
@@ -32,7 +32,11 @@ const MainNews: React.FC<MainNewsProps> = ({navigation}) => {
               key={index}
               title={article.title}
               author={article.title}
-              onNavigationPress={() => console.log('News Press')}
+              onNavigationPress={() =>
+                navigation.navigate('Details', {
+                  articleDetails: 'No Details here, yet',
+                })
+              }
             />
           ))
         ) : (
